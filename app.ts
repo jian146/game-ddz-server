@@ -327,7 +327,7 @@ server.on('connection', function (socket) {
 });
 
 const PORT = process.env.PORT || 9200;
-httpServer.listen(PORT, () => {
+httpServer.listen(Number(PORT), '0.0.0.0', () => {
   console.log(`Server listening on port ${PORT}`);
 });
 
