@@ -53,7 +53,10 @@ interface UserSocketInfo {
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: (origin, callback) => callback(null, origin || '*'),
+  credentials: true,
+}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
