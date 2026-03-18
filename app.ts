@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { createServer } from 'http';
 import { WebSocketServer } from 'ws';
 import type { WebSocket as WsWebSocket } from 'ws';
 
@@ -54,10 +55,10 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// ws 服务
-const server = new WebSocketServer({
-  port: 9201,
-});
+const httpServer = createServer(app);
+
+// ws 服务挂载到同一个 HTTP server
+const server = new WebSocketServer({ server: httpServer });
 
 let user_sockets: UserSocketInfo[] = [];
 
@@ -325,8 +326,9 @@ server.on('connection', function (socket) {
   });
 });
 
-app.listen(9200, () => {
-  console.log('Example app listening on port 9200!');
+const PORT = process.env.PORT || 9200;
+httpServer.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
 
 // 获取房间数据

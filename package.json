@@ -1,6 +1,8 @@
 {
   "scripts": {
     "dev": "ts-node app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
