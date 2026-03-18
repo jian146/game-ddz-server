@@ -1,0 +1,26 @@
+# 系统文件
+.DS_Store
+
+# 依赖
+node_modules/
+
+# 构建产物和缓存
+**/dist
+**/dist-ssr
+**/.next
+**/.turbo
+**/.cache
+**/storybook-static
+**/.tanstack/tmp
+
+# 本地工作区
+.worktrees
+
+# 日志和本地配置
+*.log
+*.local
+**/.env*.local
+
+# IDE / AI 工具配置
+.cursor
+.trae
