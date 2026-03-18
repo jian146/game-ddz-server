@@ -8,6 +8,7 @@
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^18.11.9",
     "ts-node": "^10.9.2",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "body-parser": "^1.20.1",
+    "cors": "^2.8.6",
     "express": "^4.18.2",
     "ws": "^8.12.0"
   }
