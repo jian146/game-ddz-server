@@ -84,7 +84,7 @@ const initRoomData: RoomInfo = {
   winRole: -1,
 };
 
-const roomList: RoomInfo[] = [initRoomData];
+const roomList: RoomInfo[] = [JSON.parse(JSON.stringify(initRoomData))];
 
 /**
  * 加入房间
@@ -314,6 +314,11 @@ server.on('connection', function (socket) {
         sendMes(backData);
       } else if ((data as any).type === 'onNotUseCard') {
         const backData = onNotUseCard(data);
+        sendMes(backData);
+      } else if ((data as any).type === 'init') {
+        //重开,初始化
+         roomList[0] = JSON.parse(JSON.stringify(initRoomData))
+        const backData = onStart(data);
         sendMes(backData);
       } else {
         console.log('其它事件');
